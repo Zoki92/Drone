@@ -12,6 +12,9 @@ class DroneCategory(models.Model):
 
 
 class Drone(models.Model):
+    owner = models.ForeignKey('auth.User',
+                              related_name='drones',
+                              on_delete=models.CASCADE)
     name = models.CharField(max_length=250, unique=True)
     drone_category = models.ForeignKey('DroneCategory',
                                        related_name='drones',
